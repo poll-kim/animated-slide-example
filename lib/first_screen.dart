@@ -7,28 +7,29 @@ class FirstScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(),
-        body: Center(
-          child: GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                PageRouteBuilder(
-                    transitionDuration: const Duration(seconds: 1),
-                    pageBuilder: (_, __, ___) => const SecondScreen()),
-              );
-            },
-            child: Hero(
-              tag: 'hero',
-              child: Container(
-                width: 325,
-                height: 499,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(24.0),
-                    color: Colors.blueAccent),
-              ),
+      appBar: AppBar(),
+      body: Center(
+        child: GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              PageRouteBuilder(
+                  transitionDuration: const Duration(seconds: 1),
+                  pageBuilder: (_, __, ___) => const SecondScreen()),
+            );
+          },
+          child: Hero(
+            tag: 'hero',
+            child: Container(
+              width: 325,
+              height: 499,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(24.0),
+                  color: Colors.blueAccent),
             ),
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
