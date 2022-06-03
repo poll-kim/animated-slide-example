@@ -12,7 +12,7 @@ void main() {
         name: '/',
         page: () => const FirstScreen(),
         transition: Transition.circularReveal,
-        transitionDuration: Duration(milliseconds: 2000),
+        transitionDuration: const Duration(milliseconds: 2000),
       ),
       GetPage(name: '/second', page: () => const SecondScreen()),
       GetPage(name: '/splash', page: () => const SplashScreen()),
