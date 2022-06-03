@@ -8,20 +8,26 @@ class SecondScreen extends StatefulWidget {
 }
 
 class _SecondScreenState extends State<SecondScreen> {
-  Offset offset = Offset.zero;
-  final double _height = 500;
-  final int _inputDuration = 1000;
+  Offset _offset = Offset.zero;
+  double _height = 300;
+  double _width = 300;
+  final Duration _duration = const Duration(milliseconds: 1000);
+  final Curve _curve = Curves.fastOutSlowIn;
 
-  void _slideUp() {
-    setState(() => offset -= const Offset(0, 1));
+  void _slideUpAndScale(Duration duration) {
+    Future.delayed(duration, () {
+      setState(() {
+        _offset -= const Offset(0, 1);
+        _width += 200;
+        _height += 200;
+      });
+    });
   }
 
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(milliseconds: _inputDuration), () {
-      _slideUp();
-    });
+    _slideUpAndScale(_duration);
   }
 
   @override
@@ -34,15 +40,18 @@ class _SecondScreenState extends State<SecondScreen> {
             Hero(
               tag: 'hero',
               child: Container(
-                height: _height,
+                height: 500,
                 color: Colors.blueAccent,
               ),
             ),
             AnimatedSlide(
-              duration: const Duration(milliseconds: 1000),
-              curve: Curves.easeInOut,
-              offset: offset,
-              child: Container(
+              duration: _duration,
+              curve: _curve,
+              offset: _offset,
+              child: AnimatedContainer(
+                duration: _duration,
+                curve: _curve,
+                width: _width,
                 height: _height,
                 color: Colors.redAccent,
               ),
