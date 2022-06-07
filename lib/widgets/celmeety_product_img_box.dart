@@ -30,7 +30,7 @@ class _CelmeetyProductImgBoxState extends State<CelmeetyProductImgBox> {
   Offset _offset = Offset.zero;
   double _width = 300;
   double _height = 300;
-  bool isHero = true;
+
 
   void _slideUpAndScale(Duration duration) {
     Future.delayed(duration, () {
@@ -38,7 +38,6 @@ class _CelmeetyProductImgBoxState extends State<CelmeetyProductImgBox> {
         _offset -= const Offset(0, 1);
         _width += 200;
         _height += 200;
-        isHero = !isHero;
       });
     });
   }
@@ -58,7 +57,8 @@ class _CelmeetyProductImgBoxState extends State<CelmeetyProductImgBox> {
       child: Column(
         children: [
           Hero(
-            tag: isHero ? widget.tag : "none_animation",
+            tag: widget.tag,
+            transitionOnUserGestures: true,
             child: Container(
               height: 500,
               decoration: BoxDecoration(
