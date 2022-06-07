@@ -24,8 +24,13 @@ class FirstScreen extends StatelessWidget {
               width: 325,
               height: 499,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(24.0),
-                  color: Colors.blueAccent),
+                image: const DecorationImage(
+                    image: AssetImage(
+                      'assets/img1.png',
+                    ),
+                    fit: BoxFit.fill),
+                borderRadius: BorderRadius.circular(24.0),
+              ),
             ),
           ),
         ),

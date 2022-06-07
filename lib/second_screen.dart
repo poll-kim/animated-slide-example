@@ -8,11 +8,11 @@ class SecondScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: CelmeetyProductImgBox(
+      body: const CelmeetyProductImgBox(
         imgPath: "assets/img2.png",
           heroImgPath: "assets/img1.png",
           tag: "hero",
-          duration: const Duration(milliseconds: 1000),
+          duration: Duration(milliseconds: 1000),
           curve: Curves.fastOutSlowIn,
           offset: Offset.zero,
           width: 300,

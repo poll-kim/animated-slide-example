@@ -1,29 +1,23 @@
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
 class CelmeetyProductImgBox extends StatefulWidget {
-  CelmeetyProductImgBox(
+  const CelmeetyProductImgBox(
       {Key? key,
-      required Duration duration,
-      required Curve curve,
-      required Offset offset,
-      required double width,
-      required double height,
+      required this.duration,
+      required this.curve,
+      required this.offset,
+      required this.width,
+      required this.height,
       required this.tag,
       required this.heroImgPath,
       required this.imgPath})
-      : _duration = duration,
-        _curve = curve,
-        _offset = offset,
-        _width = width,
-        _height = height,
-        super(key: key);
+      : super(key: key);
 
-  final Duration _duration;
-  final Curve _curve;
-  Offset _offset;
-  double _width;
-  double _height;
+  final Duration duration;
+  final Curve curve;
+  final Offset offset;
+  final double width;
+  final double height;
   final String tag;
   final String heroImgPath;
   final String imgPath;
@@ -33,20 +27,27 @@ class CelmeetyProductImgBox extends StatefulWidget {
 }
 
 class _CelmeetyProductImgBoxState extends State<CelmeetyProductImgBox> {
+  Offset _offset = Offset.zero;
+  double _width = 300;
+  double _height = 300;
+
   void _slideUpAndScale(Duration duration) {
     Future.delayed(duration, () {
       setState(() {
-        widget._offset -= const Offset(0, 1);
-        widget._width += 200;
-        widget._height += 200;
+        _offset -= const Offset(0, 1);
+        _width += 200;
+        _height += 200;
       });
     });
   }
 
   @override
   void initState() {
+    _offset = widget.offset;
+    _width = widget.width;
+
     super.initState();
-    _slideUpAndScale(widget._duration);
+    _slideUpAndScale(widget.duration);
   }
 
   @override
@@ -64,14 +65,14 @@ class _CelmeetyProductImgBoxState extends State<CelmeetyProductImgBox> {
             ),
           ),
           AnimatedSlide(
-            duration: widget._duration,
-            curve: widget._curve,
-            offset: widget._offset,
+            duration: widget.duration,
+            curve: widget.curve,
+            offset: _offset,
             child: AnimatedContainer(
-              duration: widget._duration,
-              curve: widget._curve,
-              width: widget._width,
-              height: widget._height,
+              duration: widget.duration,
+              curve: widget.curve,
+              width: _width,
+              height: _height,
               decoration: BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage(widget.imgPath), fit: BoxFit.cover)),
